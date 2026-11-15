@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090d">
+<title>Quản trị | TUN DEVELOPED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<section class="auth-gate" id="authGate">
+ <div class="auth-card">
+  <div class="auth-mark">T</div>
+  <div class="eyebrow">TUN DEVELOPED / SECURE ACCESS</div>
+  <h1>ADMIN <em>AUTHENTICATION</em></h1>
+  <p>Đăng nhập bằng Google để mở trung tâm quản trị. Chỉ tài khoản được cấp quyền mới truy cập được.</p>
+  <button class="primary google-button" id="googleLogin" type="button">ĐĂNG NHẬP BẰNG GOOGLE</button>
+  <p class="auth-note">Tài khoản Admin: <b>TUN DEVELOPED</b></p>
+  <p class="auth-message" id="authMessage" aria-live="polite">Vui lòng đăng nhập để tiếp tục.</p>
+ </div>
+</section>
+<header class="topbar">
+ <a class="brand" href="index.html"><span class="mark">T</span><span>TUN <b>DEVELOPED</b><small>CONTROL CENTER</small></span></a>
+ <div class="top-actions"><span class="status"><i></i> ADMIN AUTHENTICATED</span><span class="signed-email" id="adminEmail"></span><button class="logout-button" id="googleLogout" type="button">ĐĂNG XUẤT</button><a href="index.html" class="site-link">XEM WEBSITE ↗</a></div>
+</header>
+<div class="layout">
+ <aside class="sidebar">
+  <div class="side-label">WORKSPACE</div>
+  <button class="nav-item active" data-tab="overview">▦ <span>Tổng quan</span></button>
+  <button class="nav-item" data-tab="products">▤ <span>Quản lý sản phẩm</span></button>
+  <button class="nav-item" data-tab="appearance">▧ <span>Giao diện & hình ảnh</span></button>
+  <button class="nav-item" data-tab="contact">✆ <span>Liên hệ & VIP</span></button>
+  <button class="nav-item" data-tab="publish">⇧ <span>Lưu & xuất bản</span></button>
+  <div class="sidebar-bottom"><div class="side-label">QUICK LINKS</div><a href="index.html#free">Kho Free ↗</a><a href="index.html#vip">Kho VIP ↗</a><p>v2.0 • TUN DEVELOPED</p></div>
+ </aside>
+ <main class="main">
+  <section class="tab-panel active" id="tab-overview">
+   <div class="page-heading"><div><div class="eyebrow">DASHBOARD / OVERVIEW</div><h1>TRUNG TÂM <em>QUẢN TRỊ</em></h1><p>Quản lý kho phần mềm, nội dung, hình ảnh và thông tin liên hệ.</p></div><button class="primary" id="quickExport">XUẤT content.json ↓</button></div>
+   <div class="stats">
+    <article><span>TỔNG SẢN PHẨM</span><strong id="statTotal">20</strong><small>FREE + VIP</small></article>
+    <article><span>KHO MIỄN PHÍ</span><strong id="statFree">10</strong><small>Gói tải trực tiếp</small></article>
+    <article><span>KHO VIP</span><strong id="statVip">10</strong><small>Liên hệ mua</small></article>
+    <article><span>TRẠNG THÁI BẢN NHÁP</span><strong class="draft-state">LOCAL</strong><small>Chưa tự đăng lên GitHub</small></article>
+   </div>
+   <div class="dash-grid">
+    <article class="panel"><div class="panel-title"><div><span class="eyebrow">GET STARTED</span><h2>BẮT ĐẦU QUẢN LÝ</h2></div><span class="panel-icon">✦</span></div>
+     <div class="quick-list"><button data-goto="products"><b>01</b><span><strong>Thêm hoặc sửa sản phẩm</strong><small>Chỉnh tên, giá, mô tả, ảnh, phiên bản, file tải</small></span>↗</button><button data-goto="appearance"><b>02</b><span><strong>Thay hình ảnh website</strong><small>Banner, ảnh từng gói, nội dung trang chủ</small></span>↗</button><button data-goto="contact"><b>03</b><span><strong>Cập nhật liên hệ VIP</strong><small>Zalo, Facebook, Telegram và Email</small></span>↗</button><button data-goto="publish"><b>04</b><span><strong>Xuất bản thay đổi</strong><small>Tải content.json rồi cập nhật lên GitHub</small></span>↗</button></div>
+    </article>
+    <article class="panel notice"><span class="eyebrow">IMPORTANT</span><h2>QUẢN TRỊ TĨNH – KHÔNG CẦN SERVER</h2><p>Trang này cho phép chỉnh sửa dữ liệu ngay trên trình duyệt, lưu bản nháp trên máy đang dùng và xuất file <code>content.json</code> để cập nhật website.</p><p><b>Lưu ý bảo mật:</b> đây không phải hệ thống đăng nhập bảo mật. Không đặt mật khẩu bí mật, API key hay dữ liệu khách hàng trong website công khai.</p><a href="#publish" data-goto="publish" class="inline-link">XEM CÁCH XUẤT BẢN ↗</a></article>
+   </div>
+  </section>
+
+  <section class="tab-panel" id="tab-products">
+   <div class="page-heading"><div><div class="eyebrow">CATALOG / INVENTORY</div><h1>QUẢN LÝ <em>SẢN PHẨM</em></h1><p>Chọn kho Free hoặc VIP, sau đó chọn sản phẩm để chỉnh sửa.</p></div><button class="primary" id="newProduct">+ THÊM SẢN PHẨM</button></div>
+   <div class="product-manager panel">
+    <div class="manager-toolbar"><div class="switcher"><button class="active" data-kind="free">KHO FREE <b id="countFree">10</b></button><button data-kind="vip">KHO VIP <b id="countVip">10</b></button></div><input id="productSearch" placeholder="Tìm theo tên sản phẩm..."></div>
+    <div class="manager-body"><div class="product-list" id="productList"></div>
+     <form id="productForm" class="editor-form">
+      <div class="editor-head"><div><span class="eyebrow">PRODUCT EDITOR</span><h2 id="formTitle">CHỌN SẢN PHẨM</h2></div><span class="edit-pill">EDIT MODE</span></div>
+      <input type="hidden" id="pId">
+      <div class="form-grid">
+       <label class="wide">Tên sản phẩm<input id="pName" required placeholder="Ví dụ: TUN FPS BOOST"></label>
+       <label>Danh mục<input id="pCategory" required placeholder="Tối ưu"></label>
+       <label>Phiên bản<input id="pVersion" placeholder="v1.0.0"></label>
+       <label class="wide">Mô tả<textarea id="pDescription" rows="3" placeholder="Mô tả chức năng sản phẩm..."></textarea></label>
+       <label>Hệ điều hành<input id="pSystem" placeholder="Windows 10/11"></label>
+       <label>Giá bán<input id="pPrice" placeholder="Miễn phí hoặc 149.000₫"></label>
+       <label class="wide">Đường dẫn ảnh<input id="pImage" placeholder="assets/images/ten-anh.jpg hoặc URL https://..."><small>Đặt ảnh trong assets/images/ rồi nhập đường dẫn tương đối.</small></label>
+       <label class="wide" id="downloadField">Đường dẫn file tải FREE<input id="pDownload" placeholder="assets/downloads/ten-file.zip"><small>Thay ZIP demo bằng phần mềm thật trước khi phát hành.</small></label>
+      </div>
+      <div class="preview-row"><img id="imagePreview" alt="Xem trước ảnh" src=""><span>XEM TRƯỚC HÌNH ẢNH</span></div>
+      <div class="form-actions"><button class="primary" type="submit">LƯU SẢN PHẨM</button><button class="secondary" type="button" id="clearForm">LÀM MỚI</button><button class="danger" type="button" id="deleteProduct">XÓA SẢN PHẨM</button></div>
+     </form>
+    </div>
+   </div>
+  </section>
+
+  <section class="tab-panel" id="tab-appearance">
+   <div class="page-heading"><div><div class="eyebrow">BRANDING / VISUALS</div><h1>GIAO DIỆN & <em>HÌNH ẢNH</em></h1><p>Thay banner, tiêu đề, lời giới thiệu và dòng thông báo đầu trang.</p></div></div>
+   <form id="appearanceForm" class="panel settings-form">
+    <div class="form-grid">
+     <label class="wide">Dòng thông báo đầu trang<input id="aAnnouncement"></label>
+     <label class="wide">Tiêu đề trang chủ (hỗ trợ HTML cơ bản)<input id="aHeroTitle"></label>
+     <label class="wide">Mô tả trang chủ<textarea id="aHeroDescription" rows="3"></textarea></label>
+     <label class="wide">Ảnh banner trang chủ<input id="aHeroImage" placeholder="assets/images/banner.jpg hoặc URL ảnh"><small>Khuyến nghị ảnh ngang 16:9 hoặc 2:1, độ phân giải lớn.</small></label>
+     <label>Tiêu đề khu Free<input id="aFreeTitle"></label>
+     <label>Mô tả khu Free<input id="aFreeSubtitle"></label>
+     <label>Tiêu đề khu VIP<input id="aVipTitle"></label>
+     <label>Mô tả khu VIP<input id="aVipSubtitle"></label>
+     <label class="wide">Tiêu đề tin tức<input id="aNewsTitle"></label>
+    </div>
+    <div class="preview-row hero-preview"><img id="heroPreview" alt="Xem trước banner"><span>XEM TRƯỚC BANNER</span></div>
+    <button class="primary" type="submit">LƯU GIAO DIỆN</button>
+   </form>
+  </section>
+
+  <section class="tab-panel" id="tab-contact">
+   <div class="page-heading"><div><div class="eyebrow">CUSTOMER SUPPORT / VIP SALES</div><h1>LIÊN HỆ & <em>VIP</em></h1><p>Khách xem giá VIP và liên hệ trực tiếp với bạn để mua.</p></div></div>
+   <form id="contactForm" class="panel settings-form">
+    <div class="form-grid">
+     <label>Facebook URL<input id="cFacebook" placeholder="https://facebook.com/ten-trang"></label>
+     <label>Zalo URL<input id="cZalo" placeholder="https://zalo.me/so-dien-thoai"></label>
+     <label>Telegram URL<input id="cTelegram" placeholder="https://t.me/ten_tai_khoan"></label>
+     <label>Email<input id="cEmail" placeholder="mailto:ban@example.com"></label>
+     <label class="wide">Tin nhắn mẫu mua VIP<textarea id="cMessage" rows="3"></textarea></label>
+    </div>
+    <button class="primary" type="submit">LƯU THÔNG TIN LIÊN HỆ</button>
+   </form>
+   <div class="panel note-panel"><b>Luồng mua VIP hiện tại</b><p>Khách bấm gói VIP → xem mô tả và giá → chọn Zalo hoặc Email → bạn trao đổi và xác nhận thanh toán thủ công. Website không tự thu tiền hoặc tự cấp tài khoản VIP.</p></div>
+  </section>
+
+  <section class="tab-panel" id="tab-publish">
+   <div class="page-heading"><div><div class="eyebrow">DEPLOYMENT / RELEASE</div><h1>LƯU & <em>XUẤT BẢN</em></h1><p>Đưa thay đổi từ máy của bạn lên website công khai.</p></div></div>
+   <div class="publish-grid">
+    <article class="panel"><span class="step">01</span><h2>LƯU BẢN NHÁP TRÊN MÁY</h2><p>Bản nháp được lưu trong trình duyệt hiện tại. Khi mở website bằng cùng địa chỉ Live Server trên máy này, trang chủ sẽ đọc bản nháp đó.</p><button class="primary" id="saveDraft">LƯU BẢN NHÁP</button><button class="secondary" id="resetDraft">XÓA BẢN NHÁP LOCAL</button></article>
+    <article class="panel"><span class="step">02</span><h2>XUẤT FILE DỮ LIỆU</h2><p>Tải xuống file <code>content.json</code> mới. Đây là file chứa sản phẩm, giá, ảnh, banner và thông tin liên hệ.</p><button class="primary" id="exportJson">TẢI content.json ↓</button><label class="import-label">NHẬP FILE JSON ĐÃ CÓ<input type="file" id="importJson" accept=".json,application/json"></label></article>
+    <article class="panel"><span class="step">03</span><h2>CẬP NHẬT GITHUB PAGES</h2><ol><li>Mở repository GitHub của website.</li><li>Thay file <code>content.json</code> cũ bằng file vừa tải.</li><li>Nếu thêm ảnh hoặc file tải mới, tải cả các file đó vào đúng thư mục <code>assets/</code>.</li><li>Commit changes và đợi GitHub Pages cập nhật.</li></ol><a class="secondary link-button" href="https://github.com/" target="_blank" rel="noopener">MỞ GITHUB ↗</a></article>
+   </div>
+   <div class="panel safety-panel"><b>Quan trọng về bảo mật và quyền quản trị</b><p>Vì website đang dùng GitHub Pages (hosting tĩnh), trang quản trị này không có đăng nhập an toàn và không thể tự ghi file lên GitHub. Bất kỳ ai biết đường dẫn <code>/admin.html</code> đều có thể mở giao diện quản trị trên trình duyệt của họ, nhưng các thay đổi chỉ nằm trên máy của họ cho đến khi bạn tự xuất file và cập nhật repository. Muốn có tài khoản admin thật, phân quyền và lưu dữ liệu trực tuyến cần backend hoặc CMS có xác thực.</p></div>
+  </section>
+  <div class="footer-note">TUN DEVELOPED • CONTROL CENTER • LOCAL EDITING WORKSPACE</div>
+ </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="admin.js"></script>
+<script type="module" src="auth.js"></script>
+</body></html>
